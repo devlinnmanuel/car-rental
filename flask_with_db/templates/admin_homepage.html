@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/admin_homepage_style.css">
+    <title>Admin - Car Rental Management</title>
+    
+</head>
+<body>
+    <header>
+        Admin - Car Rental Management
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="{{ url_for('login') }}">Logout</a>
+        </div>
+    </header>
+    <div class="container">
+        <section class="section">
+            <h2>Pending Rental Approvals</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Car</th>
+                        <th>Date & Time</th>
+                        <th>Qty</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="rental-requests"></tbody>
+            </table>
+        </section>
+        <section class="section">
+            <h2>Rental History</h2>
+            <input type="text" id="search" placeholder="Search history..." onkeyup="searchHistory()">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Car</th>
+                        <th>Date & Time</th>
+                        <th>Qty</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="rental-history"></tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        let pendingRentals = [
+            { user: "John Doe", car: "BMW 320i", dateTime: "2025-03-22 14:30", qty: 1 },
+            { user: "Alice Smith", car: "Lamborghini Revuelto", dateTime: "2025-03-23 10:00", qty: 2 }
+        ];
+        let rentalHistory = [];
+        
+        function loadPendingRentals() {
+            const rentalList = document.getElementById("rental-requests");
+            rentalList.innerHTML = "";
+            pendingRentals.forEach((rental, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${rental.user}</td>
+                    <td>${rental.car}</td>
+                    <td>${rental.dateTime}</td>
+                    <td>${rental.qty}</td>
+                    <td>
+                        <button class="approve-button" onclick="approveRental(${index})">Approve</button>
+                        <button class="reject-button" onclick="rejectRental(${index})">Reject</button>
+                    </td>
+                `;
+                rentalList.appendChild(row);
+            });
+        }
+        
+        function approveRental(index) {
+            rentalHistory.push({ ...pendingRentals[index], status: "Approved" });
+            pendingRentals.splice(index, 1);
+            loadPendingRentals();
+            loadRentalHistory();
+        }
+        
+        function rejectRental(index) {
+            pendingRentals.splice(index, 1);
+            loadPendingRentals();
+        }
+        
+        function loadRentalHistory() {
+            const historyList = document.getElementById("rental-history");
+            historyList.innerHTML = "";
+            rentalHistory.forEach(rental => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${rental.user}</td>
+                    <td>${rental.car}</td>
+                    <td>${rental.dateTime}</td>
+                    <td>${rental.qty}</td>
+                    <td>${rental.status}</td>
+                `;
+                historyList.appendChild(row);
+            });
+        }
+        
+        function searchHistory() {
+            const filter = document.getElementById("search").value.toLowerCase();
+            const historyList = document.getElementById("rental-history");
+            const rows = historyList.getElementsByTagName("tr");
+            Array.from(rows).forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(filter) ? "table-row" : "none";
+            });
+        }
+        
+        loadPendingRentals();
+    </script>
+</body>
+</html>

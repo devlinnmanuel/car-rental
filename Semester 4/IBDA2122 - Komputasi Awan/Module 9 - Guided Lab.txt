@@ -1,0 +1,14 @@
+S3 bucket: c149386a3847312l9256691t1w674873284382-s3bucket-dxsvzrn97uc6
+CloudFront distribution domain: d26v8y5q6j9ikf.cloudfront.net
+User pool ID: us-east-1_qy7QdWAIP
+App client ID: 145bsn4jja4dqd4hi2uuk7apm
+Amazon Cognito domain prefix: us-east-1qy7qdwaip
+Identity pool ID: us-east-1:4a6f91e4-b57a-44e7-88bc-2050fbfb4d4d
+
+cd /home/ec2-user/environment
+aws s3 cp website s3://c149386a3847312l9256691t1w674873284382-s3bucket-dxsvzrn97uc6/ --recursive --cache-control "max-   age=0"
+
+admin Admin123$
+testuser Lab-password1$
+
+zFEci7Nngj6LYxA*

@@ -1,0 +1,110 @@
+<!-- <html> elemen html -->
+<!-- setiap elemen html berpasangan -->
+<!-- berpasangan tidak boleh overlapping, title tidak boleh berpasangan sama head -->
+<!-- html adalah strukturnya (kerangka), css adalah penampilannya. -->
+<!-- javascript untuk interaktif/behaviour nya -->
+
+<!-- html   : konten/data -->
+<!-- css    : styling -->
+
+<html> 
+
+    <head>
+        <title>My First Web Page</title>
+
+        <style>
+
+            #my {
+                border: 1px red solid;
+                padding: 5px;
+                text-align: center;
+            }
+
+            /* h1 {
+                font-size: 9px;
+            } */
+
+        </style>
+
+    </head>
+
+
+
+    <body>
+        <!-- semua yang mau ditampilkan di browser, letaknya ada di body -->
+        <p id="my">Hello, IBDA 2023</p>
+
+        <script>
+
+            document.getElementById("my").addEventListener("click", function() {
+                alert("Hi IBDA 2023")
+            });
+
+            console.log(p)
+
+        </script>
+
+        <a href="temp/index.html">Go To My First Page</a>
+
+        <h1>Title 1</h1>
+        <h2>Title 2</h2>
+        <h3>Title 3</h3>
+        <h4>Title 4</h4>
+        <h5>Title 5</h5>
+        <h6>Title 6</h6>
+
+        <p>This is my first paragraph</p>
+
+        <p>5 Top Language Programming: </p>
+        <br />
+        <!-- untuk kasih jarak -->
+
+        <ol>
+            <li><a href="https://www.java.com/en/">Java</a></li>
+            <li><a href="https://www.python.org">Python</a></li>
+            <li><a href="https://www.java.com">Java Script</a></li>
+            <li>C#</li>
+            <li>C</li>
+        </ol>
+
+        <p>Stefanus <p><strong>Cipto</strong></p> <a>Kurniawan</a> <em>Hadiwardoyo</em></p> <p>IBDA</p>
+        <!-- IBDA di baris baru -->
+
+        <hr>
+
+        <table>
+            <thead>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Angkatan</th>
+            </thead>
+
+            <body>
+                <tr>
+                    <td>1</td>
+                    <td>Devlin</td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Brian</td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Matthew Lay</td>
+                    <td>2023</td>
+                </tr>
+            </body>
+
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>3 Persons</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+
+</html>

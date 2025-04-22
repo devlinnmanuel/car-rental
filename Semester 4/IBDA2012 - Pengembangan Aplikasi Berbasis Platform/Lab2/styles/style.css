@@ -1,0 +1,244 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+/* untuk menghilangkan garis/bingkai putih: */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #3D8D7A;
+    color: #FBFFE4;
+    /* text-align: center; */
+}
+
+img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+}
+
+.notes {
+    padding: 10px;
+    max-width: 400px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+    background-color: #B3D8A8;
+}
+
+.content-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 60%;
+}
+
+.box {
+    flex: 1 1 100px; /* Elemen akan memiliki lebar minimum 100px dan fleksibel */
+    max-width: 150px; /* Batas maksimum untuk menjaga keseimbangan tampilan */
+    padding: 20px 50px;
+    background-color: #FBFFE4;
+    text-align: center;
+}
+
+.container-body {
+    margin: auto;
+    max-width: 80%;
+    padding: 50px;
+    background-color: #FBFFE4;
+}
+
+.circle-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3D8D7A;
+    color: #FBFFE4;
+}
+
+.tabel-konten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.tabel-konten-first, .tabel-konten-second {
+    background-color: #B3D8A8;
+    flex: 1;
+    min-width: 250px;
+}
+
+.titles {
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.paragraphs {
+    border: 1px solid black;
+    padding: 40px;
+    text-align: justify;
+}
+
+.items-below {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 50px;
+    padding: 50px 30px;
+    border: 1px black;
+    border-top-style: solid;
+}
+
+.box-items {
+    /* border: 1px solid black; */
+    padding: 20px 100px;
+    background-color: #3D8D7A;
+    color: #FBFFE4;
+    /* text-align: center; */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    text-align: center;
+    border: 1px solid black;
+    padding: 50px;
+    background-color: #3D8D7A;
+    color: #FBFFE4;
+}
+
+.footer-1, .footer-2 {
+    flex: 1;
+    min-width: 250px;
+}
+
+
+/* halaman web untuk versi tablet: */
+@media (max-width: 768px) {
+    .container-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .notes {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .content-1 {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .circle-contents {
+        gap: 20px;
+    }
+
+    .circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .tabel-konten {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .items-below {
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .box-items {
+        padding: 15px 60px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-1, .footer-2 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* halaman web untuk versi mobile: */
+@media (max-width: 480px) {
+    .container-header {
+        padding: 15px;
+    }
+
+    .notes {
+        font-size: 16px;
+    }
+
+    .content-1 {
+        /* width: 90px;
+        padding: 0px; */
+        flex: 1 1 80px;
+        max-width: 120px;
+        padding: 10px 20px;
+        /* justify-content: center; */
+    }
+
+    .box {
+        flex: 1 1 80px;
+        max-width: 120px;
+        padding: 10px 20px;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .paragraphs {
+        padding: 20px;
+    }
+
+    .box-items {
+        padding: 10px 40px;
+    }
+
+    .footer-content {
+        padding: 30px;
+    }
+}

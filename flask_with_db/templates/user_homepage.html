@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/user_homepage_style.css">
+    <title>Car Rental</title>
+
+</head>
+<body>
+    <header>Car Rental Service
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="{{ url_for('login') }}">Logout</a>
+        </div>
+    </header>
+    <nav>
+        <a href="#browse">Browse Cars</a>
+        <a href="#history">Rental History</a>
+    </nav>
+    <div class="container">
+        <div class="section-box">
+            <section id="browse" class="section">
+                <h2>Browse Available Cars</h2>
+                <p>Explore our collection of rental cars and find the perfect one for you.</p>
+                <div class="filter-container">
+                    <label for="price-filter">Filter by Price:</label>
+                    <select id="price-filter" onchange="filterCars()">
+                        <option value="all">All</option>
+                        <option value="low">Below $500</option>
+                        <option value="medium">$500 - $2000</option>
+                        <option value="high">Above $2000</option>
+                    </select>
+                </div>
+                <div class="car-list">
+                    {% for car in member_cars %}
+                    <div class="car" data-price="{{ car['car_info']['price'] }}">
+                        <img src="../static/image/{{ car['car_info']['image'] }}" alt="{{ car['car_info']['brand'] }}">
+                        <h3>{{ car['car_info']['brand'] }}</h3>
+                        <p>Price: ${{ car['car_info']['price'] }}/day</p>
+                        <p>Availability: 
+                            <span class="status">
+                                {% if car['car_info']['availability'] == 'available' %}
+                                    Available
+                                {% else %}
+                                    Rented
+                                {% endif %}
+                            </span>
+                        </p>
+                        {% if car['car_info']['availability'] == 'available' %}
+                            <button class="rent-button" onclick="rentCar(this, '{{ car.car_info.brand }}', '${{ car.car_info.price }}/day')">Rent</button>
+                            <button class="cancel-button" onclick="cancelRent(this, '{{ car.car_info.brand }}')" style="display:none;">Cancel</button>
+                        {% else %}
+                            <button class="rent-button" disabled>Rent</button>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+        <div class="section-box">
+            <section id="history" class="section">
+                <h2>Your Rental History</h2>
+                <p>View your past car rentals and manage bookings.</p>
+                <ul id="rental-history"></ul>
+            </section>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function filterCars() {
+            const filter = document.getElementById("price-filter").value;
+            const cars = document.querySelectorAll(".car");
+            
+            cars.forEach(car => {
+                const price = parseInt(car.getAttribute("data-price"));
+                if (
+                    filter === "all" ||
+                    (filter === "low" && price < 500) ||
+                    (filter === "medium" && price >= 500 && price <= 2000) ||
+                    (filter === "high" && price > 2000)
+                ) {
+                    car.style.display = "block";
+                } else {
+                    car.style.display = "none";
+                }
+            });
+        }
+        
+        function rentCar(button, carName, price) {
+            const carDiv = button.parentElement;
+            const status = carDiv.querySelector(".status");
+            status.textContent = "Pending Approval";
+            button.textContent = "Pending";
+            button.disabled = true;
+            button.style.backgroundColor = "#ffc107";
+
+            const cancelButton = carDiv.querySelector(".cancel-button");
+            cancelButton.style.display = "block";
+
+            const historyList = document.getElementById("rental-history");
+            const listItem = document.createElement("li");
+            listItem.textContent = `${carName} - ${price} (Pending Approval)`;
+            listItem.setAttribute("data-car", carName);
+            historyList.appendChild(listItem);
+        }
+
+        function cancelRent(button, carName) {
+            const carDiv = button.parentElement;
+            const status = carDiv.querySelector(".status");
+            status.textContent = "Available";
+            const rentButton = carDiv.querySelector(".rent-button");
+            rentButton.textContent = "Rent";
+            rentButton.disabled = false;
+            rentButton.style.backgroundColor = "#28a745";
+            button.style.display = "none";
+
+            const historyList = document.getElementById("rental-history");
+            const items = historyList.getElementsByTagName("li");
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].getAttribute("data-car") === carName) {
+                    historyList.removeChild(items[i]);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

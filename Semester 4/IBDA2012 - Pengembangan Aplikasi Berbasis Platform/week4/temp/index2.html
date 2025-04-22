@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            position: absolute;
+        }
+
+        .yes {
+            background-color: green;
+            color: white;
+            position: static;
+        }
+
+        .no {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Will You Be My Valentine?</h2>
+    <div class="buttons">
+        <button class="yes">Yes</button>
+        <button class="no" onclick="moveButton()">No</button>
+    </div>
+</div>
+
+<script>
+    function moveButton() {
+        let button = document.querySelector(".no");
+        let container = document.querySelector(".container");
+
+        let maxX = container.clientWidth - button.clientWidth;
+        let maxY = container.clientHeight - button.clientHeight;
+
+        let randomX = Math.floor(Math.random() * maxX);
+        let randomY = Math.floor(Math.random() * maxY);
+
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+    }
+</script>
+
+</body>
+</html>

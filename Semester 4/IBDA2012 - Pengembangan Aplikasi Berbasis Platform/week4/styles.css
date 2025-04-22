@@ -1,0 +1,63 @@
+/* CSS Rule */
+
+/* body is selector */
+body {
+    /* color is property */
+    color: #ff0000;  /* #ff0000 is value */
+    /* font-size: 50px;  */
+    /* semua yang di dalam body diterapkan ke p */
+    
+}
+
+div {
+    font-size: 10px;
+}
+
+p {
+    background-color: #00ff00;
+    font-size: 30px;
+    /* font-size: 3em; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    font-weight: bold;
+}
+
+/* h1 {
+    background-color: #0000ff;
+}
+
+h2 {
+    background-color: #0000ff;
+}
+
+h3 {
+    background-color: #0000ff;
+} */
+
+/* h1, h2, h3 {
+    background-color: #0000ff;
+} */
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Cascade: rule yang paling bawah yang menang (urutan prioritas) */
+
+
+h1 {
+    border: 10px solid blue;
+    padding: 20px;
+    margin: 50px;
+    border-style: dashed;
+}
+
+/* UNTUK BIKIN POSISI ITEM KE TENGAH */
+/* margin-left & margin-right = auto */
+
+/* yang menang yang pakai id */

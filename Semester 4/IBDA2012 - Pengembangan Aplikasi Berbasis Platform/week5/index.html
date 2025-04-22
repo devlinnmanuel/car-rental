@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>CSS 2</title>
+
+        <style>
+            
+            #container-group {
+                border: 1px solid red;
+                display: flex;
+            }
+
+            .container {
+                border: 1px solid black;
+
+                margin: 5px;
+                padding: 5px;
+
+                width: 400px;
+                height: 300px;
+
+                display: flex;
+                flex-direction: row;
+
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                /* flex-wrap: wrap; */
+            }
+
+            .item {
+                border: 1px solid blue;
+                margin: 3px;
+
+                height: 80px;
+
+                padding-left: 30px;
+                padding-right: 30px;
+
+                order: 10;
+            }
+
+            .first-item {
+                order: 1;
+            }
+
+            .second-item {
+                order: 2;
+            }
+
+            .top-item {
+                align-self: flex-start;
+            }
+
+            .flex-1-item {
+                flex: ;
+            }
+
+            .flex-2-item {
+                flex: ;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="container-group">
+            <div class="container">
+                <div class="item">
+                    <p>A</p>
+                </div>
+                
+                <div class="item">
+                    <p>B</p>
+                </div>
+
+                <div class="item">
+                    <p>C</p>
+
+                <div class="item">
+                    <p>D</p>
+                </div>
+                
+                <div class="item">
+                    <p>E</p>
+                </div>
+
+                <div class="item">
+                    <p>F</p>
+                </div>
+
+                <div class="item">
+                    <p>G</p>
+
+                <div class="item">
+                    <p>H</p>
+                </div>
+                
+                <div class="item">
+                    <p>I</p>
+                </div>
+
+                <div class="item">
+                    <p>J</p>
+                </div>
+                
+                <div class="item">
+                    <p>K</p>
+                </div>
+
+                <div class="item">
+                    <p>L</p>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="item">
+                    <p>A</p>
+                </div>
+                
+                <div class="item">
+                    <p>B</p>
+                </div>
+
+                <div class="item">
+                    <p>C</p>
+
+                <div class="item">
+                    <p>D</p>
+                </div>
+                
+                <div class="item">
+                    <p>E</p>
+                </div>
+
+                <div class="item">
+                    <p>F</p>
+                </div>
+
+                <div class="item">
+                    <p>G</p>
+
+                <div class="item">
+                    <p>H</p>
+                </div>
+                
+                <div class="item">
+                    <p>I</p>
+                </div>
+
+                <div class="item">
+                    <p>J</p>
+                </div>
+                
+                <div class="item">
+                    <p>K</p>
+                </div>
+
+                <div class="item">
+                    <p>L</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="item flex-1-item">
+                    <p>A</p>
+                </div>
+                
+                <div class="item flex-2-item">
+                    <p>B</p>
+                </div>
+
+                <div class="item">
+                    <p>C</p>
+
+                <div class="item">
+                    <p>D</p>
+            </div>
+
+        </div>
+    </body>
+</html>

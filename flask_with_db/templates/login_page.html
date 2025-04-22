@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login_page_style.css">
+    <title>Login Page</title>
+
+    <script>
+        // function showLoginForm(role) {
+        //     document.getElementById("roleSelection").style.display = "none";
+        //     let loginForm = document.getElementById("loginForm");
+        //     loginForm.style.display = "block";
+        //     loginForm.classList.add("fade-in");
+
+        //     document.getElementById("role").value = role;
+        //     let form = document.getElementById("loginFormElement");
+            
+        //     let userUrl = form.dataset.userUrl;
+        //     let adminUrl = form.dataset.adminUrl;
+        //     form.action = (role === "user") ? userUrl : adminUrl;
+
+        //     document.getElementById("registerLink").style.display = (role === "user") ? "block" : "none";
+        // }
+
+        // function validateForm(event) {
+        //     let username = document.getElementById("username").value.trim();
+        //     let password = document.getElementById("password").value.trim();
+
+        //     if (username === "" || password === "") {
+        //         event.preventDefault();  // Stop form submission
+        //         document.getElementById("errorMessage").textContent = "Username and password cannot be empty.";
+        //     }
+        // }
+
+        function showLoginForm(role) {
+            // Sembunyikan role selection dan tampilkan form login
+            document.getElementById("roleSelection").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+
+            // Set nilai role ke input tersembunyi
+            document.getElementById("role").value = role;
+
+            // Tampilkan link register hanya untuk user
+            if (role === "user") {
+                document.getElementById("registerLink").style.display = "block";
+            } else {
+                document.getElementById("registerLink").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="roleSelection">
+            <h2>Select Login Type</h2>
+            <button type="button" onclick="showLoginForm('member')">Login as User</button>
+            <button type="button" onclick="showLoginForm('admin')">Login as Admin</button>
+        </div>
+        
+        <div id="loginForm" style="display: none;">
+            <h2>Login</h2>
+            <form id="loginFormElement" method="POST" action="{{ url_for('login') }}">
+                <input type="hidden" id="role" name="role"> <!-- Input tersembunyi untuk role -->
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="registerLink" class="register-link" style="display: none;">
+                Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loginFormElement").addEventListener("submit", function(event) {
+                const username = document.getElementById("username").value;
+                const roleInput = document.getElementById("role");
+
+                // Jika username mengandung "admin", set role menjadi "admin", jika tidak "member"
+                if (username.toLowerCase().includes("admin")) {
+                    roleInput.value = "admin";
+                } else {
+                    roleInput.value = "member";
+                }
+            });
+        });
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html> 
+
+    <head>
+        <title>My First Web Page</title>
+
+        <style>
+
+            #my {
+                border: 1px red solid;
+                padding: 5px;
+                text-align: center;
+            }
+
+            /* h1 {
+                font-size: 9px;
+            } */
+
+        </style>
+
+    </head>
+
+
+
+    <body>
+        <!-- semua yang mau ditampilkan di browser, letaknya ada di body -->
+        <p id="my">Hello, IBDA 2023</p>
+
+        <script>
+
+            document.getElementById("my").addEventListener("click", function() {
+                alert("Hi IBDA 2023")
+            });
+
+            console.log(p)
+
+        </script>
+
+        <!-- hyperlink: -->
+
+        <!-- RELATIVE LINKS -->
+        <a href="../index2.html">Go To My Second Page</a><br />
+        
+        <!-- ABSOLUTE LINKS -->
+        <a href="https://calvin.ac.id">Go To CIT</a>
+        
+        <!-- ROOT RELATIVE LINKS -->
+        <!-- <a href="temp/index.html">Go To My First Page</a><br /> -->
+    </body>
+    
+</html>

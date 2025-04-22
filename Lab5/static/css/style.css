@@ -1,0 +1,80 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 20px;
+}
+
+table, thead, th, tr, td {
+    border: 1px solid #808285;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+#add-student {
+    padding: 10px;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#update, #save-btn {
+    padding: 7px;
+    color: blue;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid blue;
+    cursor: pointer;
+}
+    
+#delete {
+    padding: 7px;
+    color: red;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid red;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+#row-student button {
+    padding: 7px;
+    color: green;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid green;
+    cursor: pointer;
+}
+
+#header-table {
+    background-color: #800507;
+    color: #FCAF17;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.form-group {
+    /* border: 1px solid black;  */
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 5px; */
+}
+
+.form-group label {
+    width: 100px; /* Menyesuaikan lebar label */
+    font-weight: bold;
+}
+
+.form-group input {
+    margin-left: 5px;
+    padding: 5px;
+    /* border: 1px solid black; */
+}

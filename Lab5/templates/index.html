@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>AJAX CRUD</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    
+    <body>
+        <button type="button" id="add-student">+ Student</button><br><br>
+        
+        <table id="load-student">
+            <thead id="header-table">
+                <tr>
+                    <th>NO</th>
+                    <th>NIM</th>
+                    <th>NAMA</th>
+                    <th>TGL LAHIR</th>
+                    <th>EDIT</th>
+                </tr>
+            </thead>
+            <tbody id="row-student">
+                {% for student in students %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ student.nim }}</td>
+                    <td>{{ student.nama }}</td>
+                    <td>{{ student.tgl_lahir}}</td>
+                    <td><button 
+                        class="open-btn" 
+                        data-id="{{ student.id }}" 
+                        data-nim="{{ student.nim }}" 
+                        data-nama="{{ student.nama }}" 
+                        data-tgl_lahir="{{ student.tgl_lahir }}"
+                    >Open</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table><br><br>
+        
+        <div id="myForm" style="display: none;">
+            <form id="data-form" method="POST" action="{{ url_for('add_student') }}">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label id="nim-label">NIM</label>
+                        <p><strong>:</strong></p>
+                        <input id="nim" type="text" name="NIM"><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label id="nama-label" for="nama">NAMA</label>
+                        <p><strong>:</strong></p>
+                        <input id="nama" type="text" name="NAMA"><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label id="tgl-lahir-label" for="tgl-lahir">TGL LAHIR</label><br><br>
+                        <p><strong>:</strong></p>
+                        <input id="tgl-lahir" type="text" name="TGL-LAHIR"><br><br>
+                    </div>
+                </div>
+                
+                <button type="submit" id="save-btn">SAVE</button>
+            </form>
+        </div>
+        
+        <div id="myFormUpdate" style="display: none;">
+            <form id="data-form">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label id="nim-label">NIM</label>
+                        <p><strong>:</strong></p>
+                        <input id="nimUpdate" type="text" name="NIM"><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label id="nama-label" for="nama">NAMA</label>
+                        <p><strong>:</strong></p>
+                        <input id="namaUpdate" type="text" name="NAMA"><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label id="tgl-lahir-label" for="tgl-lahir">TGL LAHIR</label>
+                        <p><strong>:</strong></p>
+                        <input id="tgl-lahirUpdate" type="text" name="TGL-LAHIR"><br><br>
+                    </div>
+                </div>
+                
+                <button type="button" id="update">SAVE</button>
+                <button type="button" id="delete">DELETE</button>
+            </form>
+        </div>
+    </body>
+    <script src="../static/js/script.js"></script>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/register_style.css">
+    <title>User Register</title>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').onsubmit = function(event) {
+
+                let notif = document.querySelector('#notif');
+                notif.innerHTML = "Registration successful! Please log in.";
+                notif.style.color = "green";
+            };
+        });
+    </script> -->
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').onsubmit = function(event) {
+                event.preventDefault();
+                
+                let notif = document.querySelector('#notif');
+                notif.innerHTML = "Registration successful! You will be redirected to login page";
+                notif.style.color = "green";
+                
+                setTimeout(function() {
+                    window.location.href = "{{ url_for('login') }}";
+                }, 2000);
+            
+            };
+        });
+    </script> -->
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     document.querySelector('form').onsubmit = function(event) {
+        //         event.preventDefault(); // Mencegah form submit biasa
+                
+        //         const form = event.target;
+        //         const formData = new FormData(form);
+                
+                
+        //         // Kirim data dengan AJAX
+        //         fetch(form.action, {
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //         .then(response => {
+        //             if (response.ok) {
+        //                 // Tampilkan pesan sukses
+        //                 // notif.innerHTML = "Registration successful! Redirecting to login...";
+        //                 // notif.style.color = "green";
+                        
+        //                 let notif = document.querySelector('#notif');
+        //                 // const usernameErrorMessage = `{{ username_error | tojson | safe }}`;
+        //                 // const usernameErrorMessage = `{{ username_error | default('') | tojson | safe }}`;
+        //                 // const usernameErrorMessage = JSON.parse("{{ username_error | default('') | tojson | safe }}");
+        //                 // const usernameErrorMessage = `{{ username_error | default('') | tojson | safe }}`;
+        //                 // const usernameErrorMessage = JSON.parse(`{{ username_error | default('') | tojson | safe }}`);
+        //                 console.log("Raw JSON:", `{{ username_error | tojson | safe }}`);
+        //                 const usernameErrorMessage = '{{ username_error | tojson | safe }}';
+        //                 console.log(usernameErrorMessage.message)
+        //                 if (usernameErrorMessage == "Registration successful! Redirecting to login...") {
+        //                     notif.innerText = "Registration successful! Redirecting to login...";
+        //                     notif.style.color = "green";
+        //                 } else {
+        //                     notif.innerText = usernameErrorMessage;
+        //                     notif.style.color = "red";
+        //                 }
+
+        //                 // Nonaktifkan form setelah submit berhasil
+        //                 form.querySelector('button[type="submit"]').disabled = true;
+                        
+        //                 // Redirect setelah 2 detik
+        //                 setTimeout(() => {
+        //                     window.location.href = "{{ url_for('login') }}";
+        //                 }, 2000);
+        //             } else {
+        //                 throw new Error('Registration failed');
+        //             }
+        //         })
+        //         .catch(error => {
+        //             let notif = document.querySelector('#notif');
+        //             notif.innerHTML = "Registration failed. Please try again.";
+        //             notif.style.color = "red";
+        //             console.error('Error:', error);
+        //         });
+        //     };
+        // });
+
+        document.getElementById("username").addEventListener("input", function() {
+            let username = this.value.trim();
+            if (username.length < 3) {
+                document.getElementById("notif").innerText = "Username must be at least 3 characters.";
+                return;
+            }
+
+            fetch(`/check_username?username=${encodeURIComponent(username)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.available) {
+                        document.getElementById("notif").innerText = data.message;
+                        document.getElementById("notif").style.color = "red";
+                    } else {
+                        document.getElementById("notif").innerText = data.message;
+                        document.getElementById("notif").style.color = "green";
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        });
+        
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const form = document.querySelector('form');
+        //     const notif = document.querySelector('#notif');
+        //     const usernameErrorDiv = document.createElement('div'); // Elemen baru untuk error username
+        //     usernameErrorDiv.id = "username-error";
+        //     usernameErrorDiv.style.color = "red";
+        //     form.querySelector('input[name="username"]').after(usernameErrorDiv); // Letakkan setelah input username
+            
+        //     form.onsubmit = function(event) {
+        //         event.preventDefault(); // Mencegah submit default
+                
+        //         // Ubah FormData menjadi objek JSON
+        //         const formData = new FormData(form);
+        //         const jsonData = {};
+        //         formData.forEach((value, key) => {
+        //             jsonData[key] = value;
+        //         });
+
+        //         fetch(form.action, {
+        //             method: 'POST',
+        //             headers: { 
+        //                 'Content-Type': 'application/json' // Pastikan dikirim sebagai JSON
+        //             },
+        //             body: JSON.stringify(jsonData) // Kirim data sebagai JSON
+        //         })
+
+        //         // const formData = new FormData(form);
+                
+        //         // Reset pesan error sebelum melakukan request
+        //         // notif.innerText = "";
+        //         // usernameErrorDiv.innerText = "";
+
+        //         // // Kirim data dengan AJAX
+        //         // fetch(form.action, {
+        //         //     method: 'POST',
+        //         //     body: formData
+        //         // })
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw new Error(`HTTP error! Status: ${response.status}`);
+        //             }
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             if (data.success) {
+        //                 notif.innerText = "Registration successful! Redirecting to login...";
+        //                 notif.style.color = "green";
+        //                 form.querySelector('button[type="submit"]').disabled = true;
+                        
+        //                 // Redirect setelah 2 detik
+        //                 setTimeout(() => {
+        //                     window.location.href = "{{ url_for('login') }}";
+        //                 }, 2000);
+        //             } else {
+        //                 notif.innerText = "Registration failed. Please try again.";
+        //                 notif.style.color = "red";
+
+        //                 // Menampilkan error username jika ada
+        //                 if (data.username_error) {
+        //                     usernameErrorDiv.innerText = data.username_error;
+        //                 } else {
+        //                     usernameErrorDiv.innerText = "";
+        //                 }
+        //             }
+        //         })
+        //         .catch(error => {
+        //             notif.innerText = "Registration failed. Please try again.";
+        //             notif.style.color = "red";
+        //             console.error('Error:', error);
+        //         });
+        //     };
+        // });
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const form = document.querySelector('#registerForm');
+        //     const notif = document.querySelector('#notif');
+        //     const usernameInput = document.querySelector('input[name="username"]');
+        //     const usernameErrorDiv = document.querySelector('#username-error'); // Tambahan
+
+        //     // Jika ada error username dari Flask, tampilkan di JavaScript
+        //     const usernameErrorMessage = "{{ username_error if username_error else '' }}";
+        //     if (usernameErrorMessage) {
+        //         usernameErrorDiv.innerText = usernameErrorMessage;
+        //         usernameErrorDiv.style.color = "red";
+        //     }
+
+        //     form.onsubmit = function(event) {
+        //         event.preventDefault(); // Mencegah form submit biasa
+                
+        //         const formData = new FormData(form);
+                
+        //         fetch(form.action, {
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //         .then(response => response.json()) // Pastikan response dari server JSON
+        //         .then(data => {
+        //             if (data.success) {
+        //                 notif.innerHTML = "Registration successful! Redirecting to login...";
+        //                 notif.style.color = "green";
+                        
+        //                 form.querySelector('button[type="submit"]').disabled = true;
+                        
+        //                 setTimeout(() => {
+        //                     window.location.href = "{{ url_for('login') }}";
+        //                 }, 2000);
+        //             } else {
+        //                 notif.innerHTML = "Registration failed. Please try again.";
+        //                 notif.style.color = "red";
+
+        //                 // Tangani error username dari backend
+        //                 if (data.username_error) {
+        //                     usernameErrorDiv.innerText = data.username_error;
+        //                     usernameErrorDiv.style.color = "red";
+        //                 } else {
+        //                     usernameErrorDiv.innerText = "";
+        //                 }
+        //             }
+        //         })
+        //         .catch(error => {
+        //             notif.innerHTML = "Registration failed. Please try again.";
+        //             notif.style.color = "red";
+        //             console.error('Error:', error);
+        //         });
+        //     };
+        // });
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>User Register</h2>
+        <p id="notif" style="color: green;"></p>
+        <form id="registerForm" method="POST" action="{{ url_for('register') }}">
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <!-- <input type="text" name="username" placeholder="Username" required> -->
+            <input type="text" class="form-control {% if username_error %}is-invalid{% endif %}" name="username" placeholder="Username" value="{{ form_data.username if form_data }}" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="register-link">Have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+    </div>
+</body>
+</html>
