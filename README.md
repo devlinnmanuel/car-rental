@@ -3,8 +3,6 @@
 A responsive web-based car rental platform built with **Flask Framework (Python)** and integrated with **MySQL** for the database management. 
 The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure a dynamic user experience on responsive display (desktop and mobile devices).
 
------
-
 ## Use Cases
 
 1. **Member Registration**  
@@ -25,8 +23,6 @@ The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure 
 6. **Login and Logout System**  
    Separate login access for both Admin and Members.
 
------
-
 ## Key Features
 
 - User & Admin authentication.
@@ -35,8 +31,6 @@ The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure 
 - Rental transaction logging.
 - Responsive layout for desktop and mobile.
 - MySQL integration for data storage & management.
-
------
 
 ## Technology
 
@@ -47,8 +41,6 @@ The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure 
 | Database      | MySQL                                 |
 | Templating    | Jinja2                                |
 | Deployment    | Flask dev server / Python Environment |
-
------
 
 ## Getting Started
 
