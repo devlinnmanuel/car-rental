@@ -48,3 +48,11 @@ The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure 
 ```bash
 git clone https://github.com/devlinmanuel/car-rental.git
 cd car-rental
+
+### 2. Run 
+```bash
+python
+import flask
+set FLASK_APP=app.py
+set FLASK_ENV=development
+flask run
