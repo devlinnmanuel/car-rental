@@ -1,7 +1,6 @@
 # Car Rental Web Application
 
 A responsive web-based car rental platform built with **Flask Framework (Python)** and integrated with **MySQL** for database management. 
-
 The frontend is developed using **HTML**, **CSS**, and **JavaScript** to ensure a dynamic user experience on responsive display (desktop and mobile devices).
 
 ## Use Cases
